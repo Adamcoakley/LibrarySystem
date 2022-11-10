@@ -1,0 +1,48 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="form-wrapper">
+  <form method="POST" action="">
+    <h3>Register!</h3>
+    <!-- first name input -->
+    <div class="row">
+      <div class="form-group col-sm-6">
+        {{ form.first_name.label }}
+        {{ form.first_name(class_="form-control")}}
+      </div>
+      <div class="form-group col-sm-6">
+        <!-- last name input -->
+        {{ form.last_name.label }}
+        {{ form.last_name(class_="form-control")}}
+      </div>
+    </div>
+    <!-- address input -->
+    <div class="form-group">
+      {{ form.address.label }}
+      {{ form.address(class_="form-control")}}
+    </div>
+    <!-- date of birth input -->
+    <div class="form-group">
+      {{ form.dob.label }}
+      {{ form.dob(class_="form-control")}}
+    </div>
+    <!-- email input -->
+    <div class="form-group">
+      {{ form.email.label }}
+      {{ form.email(class_="form-control")}}
+    </div>
+    <!-- password input -->
+    <div class="form-group">
+          {{ form.password.label }}
+          {{ form.password(class_="form-control")}}
+    </div>
+    <!-- confirm password input -->
+    <div class="form-group">
+      {{ form.confirm_password.label }}
+      {{ form.confirm_password(class_="form-control")}}
+</div>
+      {{ form.submit }}
+      <p>Already have an account? <a href="{{url_for('login')}}">Sign in</a></p>
+    </form>
+</div>
+{% endblock %}

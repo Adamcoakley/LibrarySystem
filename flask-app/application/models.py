@@ -1,19 +1,20 @@
 from application import db 
+from flask_login import UserMixin
 
 # User Table
-class User(db.Model):
+class User(db.Model, UserMixin):
     user_id = db.Column(db.Integer, primary_key=True)
     first_name = db.Column(db.String(30), nullable=False)
     last_name = db.Column(db.String(30), nullable=False)
-    email = db.Column(db.String(100), nullable=False)
+    email = db.Column(db.String(100), nullable=False, unique=True)
     password = db.Column(db.String(100), nullable=False)
     address = db.Column(db.String(100), nullable=False)
-    dob = db.Column(db.DateTime(), nullable=False)
+    dob = db.Column(db.Date(), nullable=False)
     is_admin = db.Column(db.Integer, nullable=False, default=0)
-    record = db.relationship('Record', backref='record')
-    rating = db.relationship('Rating', backref='rating')
-    request = db.relationship('Request', backref='request')
-    transaction = db.relationship('Transaction', backref='transaction')
+    record = db.relationship('Record', backref='record_user_br')
+    rating = db.relationship('Rating', backref='rating__user_br')
+    request = db.relationship('Request', backref='request__user_br')
+    transaction = db.relationship('Transaction', backref='transaction__user_br')
 
 # User Record Table
 class Record(db.Model):
@@ -31,8 +32,8 @@ class Book(db.Model):
     desc = db.Column(db.String(30), nullable=False)
     num_of_copies = db.Column(db.Integer, nullable=False)
     age_rating = db.Column(db.Integer, nullable=False)
-    rating = db.relationship('Rating', backref='rating')
-    transaction = db.relationship('Transaction', backref='transaction')
+    rating = db.relationship('Rating', backref='rating_book_br')
+    transaction = db.relationship('Transaction', backref='transaction_book_br')
 
 # Review Table
 class Rating(db.Model):
@@ -52,8 +53,8 @@ class Request(db.Model):
 # Transaction Table
 class Transaction(db.Model):
     transaction_id = db.Column(db.Integer, primary_key=True)
-    issue_date = db.Column(db.DateTime(), nullable=False)
-    return_date = db.Column(db.DateTime(), nullable=False)
+    issue_date = db.Column(db.Date(), nullable=False)
+    return_date = db.Column(db.Date(), nullable=False)
     returned = db.Column(db.Integer, nullable=False, default=0)
     user_id = db.Column(db.Integer, db.ForeignKey('user.user_id'))
     book_id = db.Column(db.Integer, db.ForeignKey('book.book_id'))
