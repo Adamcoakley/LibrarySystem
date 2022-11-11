@@ -4,11 +4,26 @@ from application.forms import Register, Login
 from application.models import User
 import bcrypt
 
+# authentication routes
 @app.route("/", methods=["GET", "POST"])
 @app.route("/login", methods=["GET", "POST"])
 def login():
     form = Login()
-    return render_template("login.html", form=form, title="Library | Login")
+    if form.validate_on_submit():
+        # check if a user exists
+        user = User.query.filter_by(email=form.email.data).first()
+        # passwords need to be encodede to be compared
+        form_pass = form.password.data.encode('UTF-8')
+        user_pass = user.password.encode('UTF-8')
+        if user:
+            # user exists, check if their password is correct
+            if bcrypt.checkpw(form_pass, user_pass):
+                # password is correct, check if the user is an admin or standar user
+                if user.is_admin == 0:
+                    return redirect(url_for("user_view_books"))
+                else:
+                    return redirect(url_for("admin_view_books"))
+    return render_template("authentication/login.html", form=form, title="Library | Login")
 
 
 @app.route("/register", methods=["GET", "POST"])
@@ -34,5 +49,17 @@ def register():
         print(new_user)
         db.session.add(new_user)
         db.session.commit()
-        return "Added user to the database!"
-    return render_template("register.html", form=form, title="Library | Register")
+        # account created succesfully, redirect user to login page
+        return redirect(url_for("login"))
+    return render_template("authentication/register.html", form=form, title="Library | Register")
+
+# admin routes
+@app.route("/admin-view-books", methods=["GET", "POST"])
+def admin_view_books():
+    return "This is the admin page!"
+
+
+# user routes
+@app.route("/user-view-books", methods=["GET", "POST"])
+def user_view_books():
+    return "This is the user page!"
