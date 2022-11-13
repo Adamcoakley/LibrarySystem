@@ -1,0 +1,115 @@
+/* import google font */
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap");
+
+* {
+    margin: 0;
+    padding: 0;
+    outline: none;
+    border: none;
+    text-decoration: none;
+    box-sizing: border-box;
+    font-family: "Poppins", sans-serif;
+}
+
+body {
+    background: #dfe9f5;
+}
+
+/* the sidebar's container */
+nav {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    height: 100%;
+    background: #fff;
+    width: 90px;
+    overflow: hidden;
+    transition: width 0.2s linear;
+    box-shadow: 0 20px 35px rgba(0,0,0, 0.1);
+}
+
+/* the logo's container */
+.logo {
+    text-align: center;
+    display: flex;
+    margin-left: 5px;
+}
+
+/* the logo's image */
+.logo img { 
+    width: 60px;
+    height: 60px;
+    margin-right: 10px;
+}
+
+/* logo text */
+.logo span {
+    font-weight: bold;
+    font-size: 18px;
+    text-transform: uppercase;
+    margin-top: 5px;
+}
+
+a {
+    position: relative;
+    color: rgb(85, 83, 83);
+    font-size: 14px;
+    display: table;
+    width: 300px;
+    padding: 10px;
+}
+
+/* icons */
+.fa {
+    position: relative;
+    width: 70px;
+    height: 40px;
+    top: 14px;
+    font-size: 20px;
+    text-align: center;
+}
+
+/* when the nav items are hovered, the main content is shifted right */
+.nav-item {
+    position: relative;
+    top: 12px;
+    margin-left: 10px;
+}
+
+/* change colour of links on hover */
+a:hover {
+    background: #eee;
+}
+/* when the nav items are hovered, the sidebar is shifted right */
+nav:hover {
+    width: 280px;
+    transition: all 0.5s ease;
+}
+
+/* margin left of the main content so it is visible behind sidebar */
+.main-margin {
+    margin-left: 100px;
+}
+
+/* when the nav items are hovered, the main content is shifted right */
+.main-content {
+    transition: 0.5s;
+}
+nav:hover  ~ .main-content {
+    margin-left: 300px;
+    margin-right: -100px;
+}
+
+/* push the logo nav link to the bottom of the sidebar */
+.logout {
+    position: absolute;
+    bottom: 0;
+}
+
+
+
+
+
+
+

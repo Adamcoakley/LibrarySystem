@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+
+{% block css %}
+<!-- css link -->
+<link rel="stylesheet" href="../static/css/sidebar.css">
+<!-- icons link -->
+<script src="https://kit.fontawesome.com/2bee69b037.js" crossorigin="anonymous"></script>
+{% endblock %}
+
+{% block content %}
+<!-- sidebar -->
+<nav>
+    <ul>
+        <li><a href="#" class="logo">
+            <img src="../static/img/logo.png">
+            <span class="nav-item logo-text">The Library</span>
+        </a></li>
+        <li><a href="#">
+            <i class="fa fa-book"></i>
+            <span class="nav-item">Books</span>
+        </a></li>
+        <li><a href="#">
+            <i class="fa fa-star"></i>
+            <span class="nav-item">Reviews</span>
+        </a></li>
+        <li><a href="#">
+            <i class="fa fa-question-circle"></i>
+            <span class="nav-item">Request</span>
+        </a></li>
+        <li><a href="#">
+            <i class="fa fa-user"></i>
+            <span class="nav-item">Record</span>
+        </a></li>
+        <li><a href="#" class="logout">
+            <i class="fa fa-sign-out"></i>
+            <span class="nav-item">Logout</span>
+        </a></li>
+    </ul>
+</nav>
+<!-- main content -->
+<div class="main-content main-margin">
+    {% block main %}
+    {% endblock %}
+ </div>
+{% endblock %}

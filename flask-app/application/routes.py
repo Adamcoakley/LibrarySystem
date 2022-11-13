@@ -18,7 +18,7 @@ def login():
         if user:
             # user exists, check if their password is correct
             if bcrypt.checkpw(form_pass, user_pass):
-                # password is correct, check if the user is an admin or standar user
+                # password is correct, check if the user is an admin (1) or standar user (0)
                 if user.is_admin == 0:
                     return redirect(url_for("user_view_books"))
                 else:
@@ -56,10 +56,9 @@ def register():
 # admin routes
 @app.route("/admin-view-books", methods=["GET", "POST"])
 def admin_view_books():
-    return "This is the admin page!"
-
+    return render_template("admin/books.html")
 
 # user routes
 @app.route("/user-view-books", methods=["GET", "POST"])
 def user_view_books():
-    return "This is the user page!"
+    return render_template("user/books.html")
