@@ -5,42 +5,40 @@
   <form method="POST" action="">
     <h3>Register!</h3>
     <!-- first name input -->
-    <div class="row">
-      <div class="form-group col-sm-6">
-        {{ form.hidden_tag() }}
-        {{ form.first_name.label }}
-        {{ form.first_name(class_="form-control")}}
-      </div>
-      <div class="form-group col-sm-6">
-        <!-- last name input -->
-        {{ form.last_name.label }}
-        {{ form.last_name(class_="form-control")}}
-      </div>
+    <div>
+      {{ form.hidden_tag() }}
+      {{ form.first_name.label }}
+      {{ form.first_name()}}
+    </div>
+    <!-- last name input -->
+    <div> 
+      {{ form.last_name.label }}
+      {{ form.last_name()}}
     </div>
     <!-- address input -->
-    <div class="form-group">
+    <div>
       {{ form.address.label }}
-      {{ form.address(class_="form-control")}}
+      {{ form.address()}}
     </div>
     <!-- date of birth input -->
-    <div class="form-group">
+    <div>
       {{ form.dob.label }}
-      {{ form.dob(class_="form-control")}}
+      {{ form.dob()}}
     </div>
     <!-- email input -->
-    <div class="form-group">
+    <div>
       {{ form.email.label }}
-      {{ form.email(class_="form-control")}}
+      {{ form.email()}}
     </div>
     <!-- password input -->
-    <div class="form-group">
+    <div>
           {{ form.password.label }}
-          {{ form.password(class_="form-control")}}
+          {{ form.password()}}
     </div>
     <!-- confirm password input -->
-    <div class="form-group">
+    <div>
       {{ form.confirm_password.label }}
-      {{ form.confirm_password(class_="form-control")}}
+      {{ form.confirm_password() }}
 </div>
       {{ form.submit }}
       <p>Already have an account? <a href="{{url_for('login')}}">Sign in</a></p>
