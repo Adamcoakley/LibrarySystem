@@ -20,9 +20,9 @@ def login():
             if bcrypt.checkpw(form_pass, user_pass):
                 # password is correct, check if the user is an admin (1) or standar user (0)
                 if user.is_admin == 0:
-                    return redirect(url_for("user_view_books"))
+                    return redirect(url_for("user_books"))
                 else:
-                    return redirect(url_for("admin_view_books"))
+                    return redirect(url_for("admin_books"))
     return render_template("authentication/login.html", form=form, title="Library | Login")
 
 
@@ -54,11 +54,35 @@ def register():
     return render_template("authentication/register.html", form=form, title="Library | Register")
 
 # admin routes
-@app.route("/admin-view-books", methods=["GET", "POST"])
-def admin_view_books():
-    return render_template("admin/books.html")
+@app.route("/admin-books", methods=["GET", "POST"])
+def admin_books():
+    return render_template("admin/books.html", title="Admin | Books")
+
+@app.route("/admin-reviews", methods=["GET", "POST"])
+def admin_reviews():
+    return render_template("admin/reviews.html", title="Admin | Reviews")
+    
+@app.route("/admin-requests", methods=["GET", "POST"])
+def admin_requests():
+    return render_template("admin/requests.html")
+
+@app.route("/admin-accounts", methods=["GET", "POST"])
+def admin_accounts():
+    return render_template("admin/accounts.html", title="Admin | Accounts")
 
 # user routes
-@app.route("/user-view-books", methods=["GET", "POST"])
-def user_view_books():
-    return render_template("user/books.html")
+@app.route("/user-books", methods=["GET", "POST"])
+def user_books():
+    return render_template("user/books.html", title="Library | Books")
+
+@app.route("/user-reviews", methods=["GET", "POST"])
+def user_reviews():
+    return render_template("user/reviews.html", title="Library | Reviews")
+    
+@app.route("/user-requests", methods=["GET", "POST"])
+def user_requests():
+    return render_template("user/requests.html", title="Library | Requests")
+
+@app.route("/user-account", methods=["GET", "POST"])
+def user_account():
+    return render_template("user/account.html", title="Library | Account")

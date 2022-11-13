@@ -11,27 +11,27 @@
 <!-- sidebar -->
 <nav>
     <ul>
-        <li><a href="#" class="logo">
+        <li><a href="{{url_for('user_books')}}" class="logo">
             <img src="../static/img/logo.png">
             <span class="nav-item logo-text">The Library</span>
         </a></li>
-        <li><a href="#">
+        <li><a href="{{url_for('user_books')}}">
             <i class="fa fa-book"></i>
             <span class="nav-item">Books</span>
         </a></li>
-        <li><a href="#">
+        <li><a href="{{url_for('user_reviews')}}">
             <i class="fa fa-star"></i>
             <span class="nav-item">Reviews</span>
         </a></li>
-        <li><a href="#">
+        <li><a href="{{url_for('user_requests')}}">
             <i class="fa fa-question-circle"></i>
             <span class="nav-item">Request</span>
         </a></li>
-        <li><a href="#">
+        <li><a href="{{url_for('user_account')}}">
             <i class="fa fa-user"></i>
             <span class="nav-item">Record</span>
         </a></li>
-        <li><a href="#" class="logout">
+        <li><a href="{{url_for('login')}}" class="logout">
             <i class="fa fa-sign-out"></i>
             <span class="nav-item">Logout</span>
         </a></li>
