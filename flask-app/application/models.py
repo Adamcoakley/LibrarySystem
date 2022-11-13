@@ -1,5 +1,6 @@
 from application import db 
 from flask_login import UserMixin
+import bcrypt
 
 # User Table
 class User(db.Model, UserMixin):
@@ -61,3 +62,33 @@ class Transaction(db.Model):
     
 # create database tables and relationships 
 db.create_all()
+
+# create an admin account, would be in a .gitignore file, but is left here for testing purposes
+# first we need to check if the admin account exists because we only want to create the account once
+user = User.query.filter_by(email="Admin@gmail.com").first()
+
+if user:
+    # do nothing
+    pass 
+else:
+    # generate a salt
+    salt = bcrypt.gensalt()
+    # encode the string (password)
+    encoded_pass = "Password123".encode('UTF-8')
+    # hash the password 
+    hashed_password = bcrypt.hashpw(encoded_pass, salt)
+    # create a new user object
+    new_user = User(
+        first_name = "Admin",
+        last_name = "User",
+        email = "Admin@gmail.com",
+        address = "Admin HQ, LAX",
+        dob = "1999-07-13",
+        password = hashed_password,
+        is_admin = 1
+    )
+    # add and commit user to database
+    db.session.add(new_user)
+    db.session.commit()
+    
+
