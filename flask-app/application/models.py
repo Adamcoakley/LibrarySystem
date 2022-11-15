@@ -10,12 +10,12 @@ class User(db.Model, UserMixin):
     email = db.Column(db.String(100), nullable=False, unique=True)
     password = db.Column(db.String(100), nullable=False)
     address = db.Column(db.String(100), nullable=False)
-    dob = db.Column(db.Date(), nullable=False)
     is_admin = db.Column(db.Integer, nullable=False, default=0)
     record = db.relationship('Record', backref='record_user_br')
-    rating = db.relationship('Rating', backref='rating__user_br')
-    request = db.relationship('Request', backref='request__user_br')
-    transaction = db.relationship('Transaction', backref='transaction__user_br')
+    rating = db.relationship('Rating', backref='rating_user_br')
+    request = db.relationship('Request', backref='request_user_br')
+    review = db.relationship('Review', backref='review_user_br')
+    transaction = db.relationship('Transaction', backref='transaction_user_br')
 
 # User Record Table
 class Record(db.Model):
@@ -30,9 +30,8 @@ class Book(db.Model):
     book_id = db.Column(db.Integer, primary_key=True)
     title = db.Column(db.String(30), nullable=False)
     author = db.Column(db.String(30), nullable=False)
-    desc = db.Column(db.String(30), nullable=False)
     num_of_copies = db.Column(db.Integer, nullable=False)
-    age_rating = db.Column(db.Integer, nullable=False)
+    description = db.Column(db.String(200), nullable=False)
     rating = db.relationship('Rating', backref='rating_book_br')
     transaction = db.relationship('Transaction', backref='transaction_book_br')
 
@@ -50,10 +49,21 @@ class Request(db.Model):
     user_id = db.Column(db.Integer, db.ForeignKey('user.user_id'))
     title = db.Column(db.String(30), nullable=False)
     author = db.Column(db.String(30), nullable=False)
+    description = db.Column(db.String(200), nullable=False)
+
+# Request Table
+class Review(db.Model):
+    review_id = db.Column(db.Integer, primary_key=True)
+    user_id = db.Column(db.Integer, db.ForeignKey('user.user_id'))
+    title = db.Column(db.String(30), nullable=False)
+    author = db.Column(db.String(30), nullable=False)
+    review = db.Column(db.String(200), nullable=False)
 
 # Transaction Table
 class Transaction(db.Model):
     transaction_id = db.Column(db.Integer, primary_key=True)
+    title = db.Column(db.String(30), nullable=False)
+    author = db.Column(db.String(30), nullable=False)
     issue_date = db.Column(db.Date(), nullable=False)
     return_date = db.Column(db.Date(), nullable=False)
     returned = db.Column(db.Integer, nullable=False, default=0)
@@ -83,7 +93,6 @@ else:
         last_name = "User",
         email = "Admin@gmail.com",
         address = "Admin HQ, LAX",
-        dob = "1999-07-13",
         password = hashed_password,
         is_admin = 1
     )
