@@ -11,6 +11,7 @@ This repository contains my delivarable for the QA devops fundamental project.
 * [Version Control](#Project-Brief)
 * [The Application](#Project-Brief)
 * [Future Work](#Project-Brief)
+* [Clone the Project](#Project-Brief)
 * [Usage](#Project-Brief)
 
 ## Objectives 
@@ -72,10 +73,13 @@ The following image displays the state of the trello board after the minimum via
 </p>
 
 ## Risk Assessment
-This placeholder will be updated by the end of the day - 16/11/2022
+A thorough risk assessment was performed at the outset of the planning phase. By evaluating scenarios that may impact the project in a negative or positive way, I was able to mitigate the damage they may cause to the project. The project was designed so that these risks are less likely to occur. 
+<p align="center">
+    <img src="https://github.com/Adamcoakley/LibrarySystem/blob/main/readme-images/RiskAssessment.png?raw=true">
+</p>
 
 ## Version Control
-This placeholder will be updated by the end of the day - 16/11/2022
+For version control, git was used, with the project repository hosted on GitHub. On top of that, the feature branch model was used, which means, a separate branch was created for each additional feature. For example, the ability to add a book to the database. Once the functionality was developed, the feature branch was merged with the main branch. I repeated this process until the project was complete.
 
 ## The Application
 ### Admin side
@@ -97,7 +101,7 @@ To delete a book, the admin presses on the red button named "Delete." An "are yo
     <img src="https://github.com/Adamcoakley/LibrarySystem/blob/main/readme-images/4-delete-book.png?raw=true">
 </p>
 
-## User
+## User Side
 Once logged in, the user is presented with all of the books in the database.
 <p align="center">
     <img src="https://github.com/Adamcoakley/LibrarySystem/blob/main/readme-images/5-user-books.png?raw=true">
@@ -129,6 +133,29 @@ Also, the user's requests are visible on the admin side of the system. The admin
 </p>
 
 ## Future Work
-This placeholder will be updated by the end of the day - 16/11/2022
+There are two things on the final trello board that have not been completed.
+* Build a search book functionality
+* Improve the register and login user interface
+
+The build search book functionality would help the application as it grows. Currently, it is very easy to find a book to hire or review. However, as the number of books in the system grows, a search button would improve the user experience massively.
+
+Secondly, there has been no styles added to the register and login screens as it was important to stick to developing the MVP. To complete the application, I would like to add some CSS or Bootstrap to both.
+
+## Clone the Project
+1. Above the list of files, click **code**
+2. To clone the repository using HTTPS, under "Clone with HTTPS," click the copy icon.
+3. Open the terminal on your computer.
+4. Change the current working directory to the location where you want the cloned directory.
+5. Type git clone, and the paste the URL you just copied. For example: <br>
+``` git clone https://github.com/Adamcoakley/LibrarySystem.git ```
+<br>
+6. Press enter and the clone will be created.
 
 ## Usage
+All of the required software packages for the project are within the requirements.txt file. There is a script file called ```initialise.sh``` within the project directory which will create a virtual environment with all of the necessary packages. 
+
+To begin with:
+* After cloning and opening the project, open a new terminal
+* If you are on mac or linux, make the script executable with: ```chmod +x initialise.sh```
+* Run the script by entering ```./initialise.sh```
+* A virtual environment should be created within the project directory and the installed packages will be visible within the terminal
