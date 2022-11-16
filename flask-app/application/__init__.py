@@ -1,13 +1,14 @@
 from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
+import os 
 
 # app definition
 app = Flask(__name__)
 
 # configure db
 db = SQLAlchemy(app)
-app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+pymysql://root:Hanover51@localhost:3306/library'
-app.config['SECRET_KEY'] = 'thisisasecretkey'
+app.config['SQLALCHEMY_DATABASE_URI'] = os.getenv('DATABASE_URI')
+app.config['SECRET_KEY'] = os.getenv('SECRET_KEY')
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
 # extra imports 

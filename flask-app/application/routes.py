@@ -253,7 +253,7 @@ def hire_book(book_id):
         # check if the user already has this book 
         has_book = Transaction.query.filter_by(user_id=user, book_id=book_id).first()
         # query to get the books number of copies 
-        book = Book.query.filter_by(user_id=user, book_id=book_id).first()
+        book = Book.query.filter_by(book_id=book_id).first()
         num_of_copies = book.num_of_copies
         if num_of_copies <= 0:
             flash("This book is out of stock!")
@@ -288,6 +288,8 @@ def hire_book(book_id):
             book = Book.query.filter_by(book_id=book_id).first()
             book.num_of_copies -= 1
             db.session.commit()
+            # flash message 
+            flash("Book hired succesfully!")
             return redirect(url_for("user_books"))
 
 # hire a book
