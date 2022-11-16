@@ -276,6 +276,8 @@ def hire_book(book_id):
             return_date = issue_date + relativedelta(months =+ 3)
             # create a transaction object
             transaction = Transaction(
+                title = book.title,
+                author = book.author,
                 issue_date = issue_date,
                 return_date = return_date,
                 user_id = user,
@@ -285,7 +287,6 @@ def hire_book(book_id):
             db.session.add(transaction)
             db.session.commit()
             # reduce the copies of the book by one
-            book = Book.query.filter_by(book_id=book_id).first()
             book.num_of_copies -= 1
             db.session.commit()
             # flash message 
