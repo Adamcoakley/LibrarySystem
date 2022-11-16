@@ -77,7 +77,10 @@ This placeholder will be updated by the end of the day - 16/11/2022
 This placeholder will be updated by the end of the day - 16/11/2022
 
 ## The Application
-This placeholder will be updated by the end of the day - 16/11/2022
+<p align="center">
+    <img src="https://github.com/Adamcoakley/LibrarySystem/blob/main/readme-images/1-admin-books.png?raw=true">
+</p>
+
 
 ## Future Work
 This placeholder will be updated by the end of the day - 16/11/2022
