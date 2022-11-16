@@ -193,7 +193,7 @@ def admin_requests():
             # commit the delete query
             db.session.commit()
             return redirect(url_for("admin_requests"))  
-        return render_template("admin/requests.html", requests=requests)
+        return render_template("admin/requests.html", requests=requests, title="Admin | Requests")
     else:
         # the user is not authenticated
         return redirect(url_for("login"))
