@@ -23,3 +23,33 @@ class TestBase(TestCase):
     def tearDown(self):
         db.session.remove()
         db.drop_all()
+        
+# test to add a book
+class TestAddBook(TestBase):
+    def test_add_book(self):
+        response = self.client.post(
+            url_for('admin_books'),
+            data = dict(
+                title = "The Great Gatzby",
+                author = "F.Scott Fitagerald",
+                num_of_copies = 10,
+                description = "A 1925 novel set in the jazz age.",
+            ),
+            follow_redirects = True
+        )
+
+# test to delete a book
+class TestDeleteBook(TestBase):
+    def test_delete_book(self):
+        response = self.client.delete(
+            url_for('admin_books'),
+            data = dict(
+                title = "The Great Gatzby",
+                author = "F.Scott Fitagerald",
+                num_of_copies = 10,
+                description = "A 1925 novel set in the jazz age.",
+            ),
+            follow_redirects = True
+        )
+
+
