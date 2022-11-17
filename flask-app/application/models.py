@@ -12,7 +12,6 @@ class User(db.Model, UserMixin):
     address = db.Column(db.String(100), nullable=False)
     is_admin = db.Column(db.Integer, nullable=False, default=0)
     record = db.relationship('Record', backref='record_user_br')
-    rating = db.relationship('Rating', backref='rating_user_br')
     request = db.relationship('Request', backref='request_user_br')
     review = db.relationship('Review', backref='review_user_br')
     transaction = db.relationship('Transaction', backref='transaction_user_br')
@@ -44,17 +43,10 @@ class Rating(db.Model):
     rating = db.Column(db.Integer, nullable=False)
 
 # Request Table
-class Request(db.Model):
-    request_id = db.Column(db.Integer, primary_key=True)
-    user_id = db.Column(db.Integer, db.ForeignKey('user.user_id'))
-    title = db.Column(db.String(30), nullable=False)
-    author = db.Column(db.String(30), nullable=False)
-    description = db.Column(db.String(200), nullable=False)
-
-# Request Table
 class Review(db.Model):
     review_id = db.Column(db.Integer, primary_key=True)
     user_id = db.Column(db.Integer, db.ForeignKey('user.user_id'))
+    book_id = db.Column(db.Integer, db.ForeignKey('book.book_id'))
     title = db.Column(db.String(30), nullable=False)
     author = db.Column(db.String(30), nullable=False)
     review = db.Column(db.String(200), nullable=False)
