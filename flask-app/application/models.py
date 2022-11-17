@@ -58,7 +58,6 @@ class Transaction(db.Model):
     author = db.Column(db.String(30), nullable=False)
     issue_date = db.Column(db.Date(), nullable=False)
     return_date = db.Column(db.Date(), nullable=False)
-    returned = db.Column(db.Integer, nullable=False, default=0)
     user_id = db.Column(db.Integer, db.ForeignKey('user.user_id'))
     book_id = db.Column(db.Integer, db.ForeignKey('book.book_id'))
     
