@@ -38,8 +38,8 @@ class Book(db.Model):
 class Request(db.Model):
     request_id = db.Column(db.Integer, primary_key=True)
     user_id = db.Column(db.Integer, db.ForeignKey('user.user_id'))
-    title = db.Column(db.String(30), nullable=False)
-    author = db.Column(db.String(30), nullable=False)
+    title = db.Column(db.String(100), nullable=False)
+    author = db.Column(db.String(50), nullable=False)
     description = db.Column(db.String(200), nullable=False)
 
 # Review Table
@@ -47,15 +47,15 @@ class Review(db.Model):
     review_id = db.Column(db.Integer, primary_key=True)
     user_id = db.Column(db.Integer, db.ForeignKey('user.user_id'))
     book_id = db.Column(db.Integer, db.ForeignKey('book.book_id'))
-    title = db.Column(db.String(30), nullable=False)
-    author = db.Column(db.String(30), nullable=False)
+    title = db.Column(db.String(100), nullable=False)
+    author = db.Column(db.String(50), nullable=False)
     review = db.Column(db.String(200), nullable=False)
 
 # Transaction Table
 class Transaction(db.Model):
     transaction_id = db.Column(db.Integer, primary_key=True)
-    title = db.Column(db.String(30), nullable=False)
-    author = db.Column(db.String(30), nullable=False)
+    title = db.Column(db.String(100), nullable=False)
+    author = db.Column(db.String(50), nullable=False)
     issue_date = db.Column(db.Date(), nullable=False)
     return_date = db.Column(db.Date(), nullable=False)
     user_id = db.Column(db.Integer, db.ForeignKey('user.user_id'))
