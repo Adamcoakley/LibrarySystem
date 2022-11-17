@@ -34,15 +34,15 @@ class Book(db.Model):
     rating = db.relationship('Rating', backref='rating_book_br')
     transaction = db.relationship('Transaction', backref='transaction_book_br')
 
-# Review Table
-class Rating(db.Model):
-    review_id = db.Column(db.Integer, primary_key=True)
-    user_id = db.Column(db.Integer, db.ForeignKey('user.user_id'))
-    book_id = db.Column(db.Integer, db.ForeignKey('book.book_id'))
-    review = db.Column(db.String(100), nullable=False)
-    rating = db.Column(db.Integer, nullable=False)
-
 # Request Table
+class Request(db.Model):
+    request_id = db.Column(db.Integer, primary_key=True)
+    user_id = db.Column(db.Integer, db.ForeignKey('user.user_id'))
+    title = db.Column(db.String(30), nullable=False)
+    author = db.Column(db.String(30), nullable=False)
+    description = db.Column(db.String(200), nullable=False)
+
+# Review Table
 class Review(db.Model):
     review_id = db.Column(db.Integer, primary_key=True)
     user_id = db.Column(db.Integer, db.ForeignKey('user.user_id'))
