@@ -2,17 +2,17 @@
 This repository contains my delivarable for the QA devops fundamental project.
 
 ## Contents
-* [Objectives](#Project-Brief)
-* [Scope](#Project-Brief)
-* [Application Design](#Project-Brief)
-* [Database Schema](#Project-Brief)
-* [Trello Board](#Project-Brief)
-* [Risk Assessment](#Project-Brief)
-* [Version Control](#Project-Brief)
-* [The Application](#Project-Brief)
-* [Future Work](#Project-Brief)
-* [Clone the Project](#Project-Brief)
-* [Usage](#Project-Brief)
+* [Objectives](#Objectives)
+* [Scope](#Scope)
+* [Application Design](#Application-Design)
+* [Database Schema](#Database-Schema)
+* [Trello Board](#Trello-Board)
+* [Risk Assessment](#Risk-Assessment)
+* [Version Control](#Version-Control)
+* [The Application](#The-Application)
+* [Future Work](#Future-Work)
+* [Clone the Project](#Clone-the-Project)
+* [Usage](#Usage)
 
 ## Objectives 
 To create an application with CRUD functionality (Create, Read, Update, Delete) with utilisation of supporting tools, methodologies and technologies - including Databases, Python, Flask, Testing, Basic Linux, Git and Project Management.
