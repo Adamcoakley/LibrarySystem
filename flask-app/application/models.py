@@ -12,7 +12,6 @@ class User(db.Model, UserMixin):
     address = db.Column(db.String(100), nullable=False)
     is_admin = db.Column(db.Integer, nullable=False, default=0)
     record = db.relationship('Record', backref='record_user_br')
-    rating = db.relationship('Rating', backref='rating_user_br')
     request = db.relationship('Request', backref='request_user_br')
     review = db.relationship('Review', backref='review_user_br')
     transaction = db.relationship('Transaction', backref='transaction_user_br')
@@ -28,45 +27,37 @@ class Record(db.Model):
 # Books Table
 class Book(db.Model):
     book_id = db.Column(db.Integer, primary_key=True)
-    title = db.Column(db.String(30), nullable=False)
-    author = db.Column(db.String(30), nullable=False)
+    title = db.Column(db.String(100), nullable=False)
+    author = db.Column(db.String(50), nullable=False)
     num_of_copies = db.Column(db.Integer, nullable=False)
     description = db.Column(db.String(200), nullable=False)
-    rating = db.relationship('Rating', backref='rating_book_br')
+    review = db.relationship('Review', backref='review_book_br')
     transaction = db.relationship('Transaction', backref='transaction_book_br')
-
-# Review Table
-class Rating(db.Model):
-    review_id = db.Column(db.Integer, primary_key=True)
-    user_id = db.Column(db.Integer, db.ForeignKey('user.user_id'))
-    book_id = db.Column(db.Integer, db.ForeignKey('book.book_id'))
-    review = db.Column(db.String(100), nullable=False)
-    rating = db.Column(db.Integer, nullable=False)
 
 # Request Table
 class Request(db.Model):
     request_id = db.Column(db.Integer, primary_key=True)
     user_id = db.Column(db.Integer, db.ForeignKey('user.user_id'))
-    title = db.Column(db.String(30), nullable=False)
-    author = db.Column(db.String(30), nullable=False)
+    title = db.Column(db.String(100), nullable=False)
+    author = db.Column(db.String(50), nullable=False)
     description = db.Column(db.String(200), nullable=False)
 
-# Request Table
+# Review Table
 class Review(db.Model):
     review_id = db.Column(db.Integer, primary_key=True)
     user_id = db.Column(db.Integer, db.ForeignKey('user.user_id'))
-    title = db.Column(db.String(30), nullable=False)
-    author = db.Column(db.String(30), nullable=False)
+    book_id = db.Column(db.Integer, db.ForeignKey('book.book_id'))
+    title = db.Column(db.String(100), nullable=False)
+    author = db.Column(db.String(50), nullable=False)
     review = db.Column(db.String(200), nullable=False)
 
 # Transaction Table
 class Transaction(db.Model):
     transaction_id = db.Column(db.Integer, primary_key=True)
-    title = db.Column(db.String(30), nullable=False)
-    author = db.Column(db.String(30), nullable=False)
+    title = db.Column(db.String(100), nullable=False)
+    author = db.Column(db.String(50), nullable=False)
     issue_date = db.Column(db.Date(), nullable=False)
     return_date = db.Column(db.Date(), nullable=False)
-    returned = db.Column(db.Integer, nullable=False, default=0)
     user_id = db.Column(db.Integer, db.ForeignKey('user.user_id'))
     book_id = db.Column(db.Integer, db.ForeignKey('book.book_id'))
     
