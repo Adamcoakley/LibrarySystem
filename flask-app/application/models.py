@@ -31,7 +31,7 @@ class Book(db.Model):
     author = db.Column(db.String(50), nullable=False)
     num_of_copies = db.Column(db.Integer, nullable=False)
     description = db.Column(db.String(200), nullable=False)
-    rating = db.relationship('Rating', backref='rating_book_br')
+    review = db.relationship('Review', backref='review_book_br')
     transaction = db.relationship('Transaction', backref='transaction_book_br')
 
 # Request Table
