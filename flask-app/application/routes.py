@@ -92,7 +92,6 @@ def register():
 def admin_books():
     # check if the admin session variable is set 
     if "admin" in session:
-        admin = session["admin"]
         # retrieve all the books from the database and display them 
         books = Book.query.all()
         # add a book to the database when the add book button is pressed
@@ -234,7 +233,6 @@ def admin_accounts():
 def user_books():
     # check if the user session variable is set 
     if "user_id" in session:
-        user = session["user_id"]
         # retrieve all the books from the database and display them 
         books = Book.query.all()
         return render_template("user/books.html", title="Library | Books", books=books)
@@ -390,7 +388,6 @@ def user_requests():
 def user_account():
     # check if the user session variable is set 
     if "user_id" in session:
-        user = session["user_id"]
         # query the transaction table
         transactions = Transaction.query.all()
         return render_template("user/account.html", title="Library | Account", transactions=transactions)
