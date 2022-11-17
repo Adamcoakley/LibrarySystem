@@ -27,8 +27,8 @@ class Record(db.Model):
 # Books Table
 class Book(db.Model):
     book_id = db.Column(db.Integer, primary_key=True)
-    title = db.Column(db.String(30), nullable=False)
-    author = db.Column(db.String(30), nullable=False)
+    title = db.Column(db.String(100), nullable=False)
+    author = db.Column(db.String(50), nullable=False)
     num_of_copies = db.Column(db.Integer, nullable=False)
     description = db.Column(db.String(200), nullable=False)
     rating = db.relationship('Rating', backref='rating_book_br')
