@@ -147,7 +147,7 @@ Secondly, there has been no styles added to the register and login screens as it
 3. Open the terminal on your computer.
 4. Change the current working directory to the location where you want the cloned directory.
 5. Type git clone, and the paste the URL you just copied. For example: <br>
-``` git clone https://github.com/Adamcoakley/LibrarySystem.git ```
+``` git clone https://github.com/Adamcoakley/library-system.git ```
 <br>
 6. Press enter and the clone will be created.
 
